@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql
+    container_name: container-db
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: pedidos_bd
+    volumes:
+      - ./mysql-db:/var/lib/mysql
+
+volumes:
+    mysql-db:
