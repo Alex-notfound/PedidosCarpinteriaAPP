@@ -1,8 +1,7 @@
 package com.pedidosApp.service;
 
-import com.pedidosApp.commons.GenericServiceAPI;
-import com.pedidosApp.entity.Pedido;
+import com.pedidosApp.model.Pedido;
 
-public interface PedidoService extends GenericServiceAPI<Pedido, Long>{
+public interface PedidoService extends GenericServiceAPI<Pedido, Long> {
 
 }

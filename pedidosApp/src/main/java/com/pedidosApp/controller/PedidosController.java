@@ -16,6 +16,6 @@ public class PedidosController {
 	@RequestMapping(value = { "", "/" })
 	public String index(Model model) {
 		model.addAttribute("list", perdidoService.getAll());
-		return "UsuariosShowAll";
+		return "PedidosList";
 	}
 }

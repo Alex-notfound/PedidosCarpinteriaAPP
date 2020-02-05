@@ -1,4 +1,4 @@
-package com.pedidosApp.commons;
+package com.pedidosApp.service;
 
 import java.io.Serializable;
 import java.util.ArrayList;

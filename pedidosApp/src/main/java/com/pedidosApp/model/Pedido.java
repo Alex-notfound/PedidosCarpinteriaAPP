@@ -1,4 +1,4 @@
-package com.pedidosApp.entity;
+package com.pedidosApp.model;
 
 import java.sql.Date;
 

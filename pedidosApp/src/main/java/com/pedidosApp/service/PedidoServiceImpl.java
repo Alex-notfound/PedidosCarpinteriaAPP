@@ -1,14 +1,14 @@
-package com.pedidosApp.service.impl;
+package com.pedidosApp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
-import com.pedidosApp.commons.GenericServiceImpl;
-import com.pedidosApp.entity.Pedido;
+import com.pedidosApp.model.Pedido;
 import com.pedidosApp.repository.PedidoRepository;
-import com.pedidosApp.service.PedidoService;
 
 @SuppressWarnings("serial")
+@Service
 public class PedidoServiceImpl extends GenericServiceImpl<Pedido, Long> implements PedidoService {
 
 	@Autowired
