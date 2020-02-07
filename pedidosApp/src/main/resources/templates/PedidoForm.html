@@ -2,12 +2,97 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <title>PedidosApp</title>
 <link th:href="@{../../bootstrap/css/bootstrap.css}" rel="stylesheet" />
 <link th:href="@{../../fontawesome/css/all.css}" rel="stylesheet">
+<!-- JQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- 	Popper -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+
 <script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
+
 </head>
 <body>
+
+	<div th:replace="navbar :: navbar"></div>
+
+	<div class="container p-4">
+		<h4 class="mb-3">Añadir pedido</h4>
+		<form>
+			<div class="form-group row">
+				<div class="col">
+					<label for="referencia" class="ml-1 col-form-label">Referencia</label>
+					<input type="text" class="form-control" id="referencia"
+						placeholder="Referencia">
+				</div>
+				<div class="col">
+					<label for="precio" class="ml-1 col-form-label">Precio</label> <input
+						type="number" class="form-control" id="precio"
+						placeholder="Precio">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col">
+					<label for="fechaPedido" class="ml-1 col-form-label">Fecha
+						de pedido</label> <input class="form-control" type="date"
+						value="2011-08-19" id="fechaPedido">
+				</div>
+
+				<div class="col">
+					<label for="fechaEntrega" class="ml-1 col-form-label">Fecha
+						de entrega</label> <input class="form-control" type="date"
+						value="2011-08-19" id="fechaEntrega">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="observacion" class="ml-1 col-form-label">Observación</label>
+				<textarea class="form-control" id="observacion" rows="3"></textarea>
+			</div>
+			<div class="form-group">
+				<label class="ml-1 col-form-label" for="imagenes">Imágenes</label> <input
+					type="file" class="form-control-file" id="imagenes"
+					aria-describedby="fileHelp"> <small id="fileHelp"
+					class="form-text text-muted">Introduce las imágenes
+					relacionadas con el pedido.</small>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-sm-10">
+					<a href="#" type="submit" class="btn btn-primary">Guardar</a> <a
+						data-toggle="modal" data-target="#cancelModal" href="#cancelModal"
+						class="btn btn-secondary">Cancelar</a>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog"
+		aria-labelledby="cancelModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="cancelModalLabel">¿Seguro que
+						desea cancelar?</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" data-dismiss="modal" href="#">Continuar</a>
+					<a class="btn btn-danger" th:href="@{/pedidos/}">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
