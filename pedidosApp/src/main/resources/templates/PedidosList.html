@@ -2,53 +2,126 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <title>PedidosApp</title>
 <link th:href="@{../../bootstrap/css/bootstrap.css}" rel="stylesheet" />
 <link th:href="@{../../fontawesome/css/all.css}" rel="stylesheet">
+<!-- JQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- 	Popper -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+
 <script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
+<!-- Script propio -->
+<script th:src="@{../../pedidos.js}"></script>
 </head>
 <body>
-	<table class="table">
-		<thead class="thead-dark">
-			<tr>
-				<th scope="col">Referencia</th>
-				<th scope="col">Fecha pedido</th>
-				<th scope="col">Fecha entrega</th>
-				<th scope="col">Precio</th>
-				<th scope="col"></th>
-				<th scope="col"></th>
-				<th scope="col"></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>Mark</td>
-				<td>Otto</td>
-				<td>@mdo</td>
-				<td><a><i class="far fa-eye"></i></a></td>
-				<td><a><i class="fas fa-edit"></i></a></td>
-				<td><a><i class="fas fa-trash-alt"></i></a></td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-				<td><a><i class="far fa-eye"></i></a></td>
-				<td><a><i class="fas fa-edit"></i></a></td>
-				<td><a><i class="fas fa-trash-alt"></i></a></td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-				<td><a><i class="far fa-eye"></i></a></td>
-				<td><a><i class="fas fa-edit"></i></a></td>
-				<td><a><i class="fas fa-trash-alt"></i></a></td>
-			</tr>
-		</tbody>
-	</table>
+	<div th:replace="navbar :: navbar"></div>
+
+	<div>
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Referencia</th>
+					<th scope="col">Fecha pedido</th>
+					<th scope="col">Fecha entrega</th>
+					<th scope="col">Precio</th>
+					<th scope="col"></th>
+					<th scope="col"></th>
+					<th scope="col"><a data-toggle="modal"
+						data-target="#searchModal" href="#searchModal"><i
+							class="fas fa-search"></i></a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pedido : ${list}">
+					<th scope="row" th:text="${pedido.referencia}"></th>
+					<td th:text="${pedido.fechaPedido}"></td>
+					<td th:text="${pedido.fechaEntrega}"></td>
+					<td th:text="${pedido.precio}"></td>
+					<td><a th:href="@{/pedidos/detail/{id}(id=${pedido.id})}"><i
+							class="far fa-eye"></i></a></td>
+					<td><a th:href="@{/pedidos/edit/{id}(id=${pedido.id})}"><i
+							class="fas fa-edit"></i> </a></td>
+					<td><a data-toggle="modal" data-target="#deletePedidoModal"
+						th:attr="data-pedido=${pedido.id}" href="#deletePedidoModal"><i
+							class="fas fa-trash-alt"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="modal fade" id="deletePedidoModal" tabindex="-1"
+		role="dialog" aria-labelledby="deletePedidoModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deletePedidoModalLabel">¿Seguro
+						que desea eliminar?</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-secondary" data-dismiss="modal" href="#">Cancelar</a>
+					<a id="button-deletePedido" class="btn btn-danger">Eliminar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="searchModal" tabindex="-1" role="dialog"
+		aria-labelledby="searchModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="searchModalLabel">Buscar pedido</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action=""></form>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-secondary" data-dismiss="modal" href="#">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(document).ready(
+				function() {
+					$('#deletePedidoModal')
+							.on(
+									'show.bs.modal',
+									function(event) {
+										var button = $(event.relatedTarget);
+										var pedidoId = button.data('pedido');
+										var modal = $(this);
+
+										var baseLink = /*[[@{/}]]*/; 
+										var pageName = 'pedidos/delete/'+ pedidoId; 
+											/*[+
+										var pageLink = baseLink + pageName;
+											+]*/
+
+										document.getElementById(
+												"button-deletePedido")
+												.setAttribute("href", pageLink);
+									});
+				});
+		/*]]>*/
+	</script>
+
 </body>
 </html>
