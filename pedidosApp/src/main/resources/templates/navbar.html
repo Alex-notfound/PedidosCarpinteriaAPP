@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>PedidosApp</title>
+<link th:href="@{../../bootstrap/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{../../fontawesome/css/all.css}" rel="stylesheet">
+<!-- JQuery -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- 	Popper -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+
+<script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+	<div th:fragment="navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<!-- 			<a class="navbar-brand" href="#">Navbar</a> -->
+			<!-- 			<button class="navbar-toggler" type="button" data-toggle="collapse" -->
+			<!-- 				data-target="#navbarTogglerDemo02" -->
+			<!-- 				aria-controls="navbarTogglerDemo02" aria-expanded="false" -->
+			<!-- 				aria-label="Toggle navigation"> -->
+			<!-- 				<span class="navbar-toggler-icon"></span> -->
+			<!-- 			</button> -->
+
+			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/pedidos/}">Pedidos <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/muebles/}">Muebles</a></li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<div class="btn btn-outline-success my-2 my-sm-0">Ebony
+						Interiorismo</div>
+				</form>
+			</div>
+		</nav>
+	</div>
+</body>
+</html>
