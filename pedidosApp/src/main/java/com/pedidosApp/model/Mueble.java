@@ -43,6 +43,19 @@ public class Mueble {
 		this.pedido = pedido;
 	}
 
+	public Mueble(String unidades, String tipo, String modelo, String color, String grosor, String medidas,
+			String descripcion, String precioUnitario, Pedido pedido) {
+		this.unidades = Integer.valueOf(unidades);
+		this.tipo = tipo;
+		this.modelo = modelo;
+		this.color = color;
+		this.grosor = grosor;
+		this.medidas = medidas;
+		this.descripcion = descripcion;
+		this.precioUnitario = Double.valueOf(precioUnitario);
+		this.pedido = pedido;
+	}
+
 	public Pedido getPedido() {
 		return pedido;
 	}
