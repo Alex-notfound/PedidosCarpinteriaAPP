@@ -1,5 +1,11 @@
 package com.pedidosApp.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pedidosApp.model.Mueble;
 import com.pedidosApp.model.Pedido;
@@ -26,6 +33,8 @@ public class PedidosController {
 	@Autowired
 	private MuebleService muebleService;
 	private Mueble muebleNuevo;
+
+	public static String rutaFicheros = "datosPedidos/";
 
 	@RequestMapping(value = { "", "/" })
 	public String listAll(Model model) {
@@ -58,7 +67,21 @@ public class PedidosController {
 	}
 
 	@PostMapping("/save")
-	public String save(Pedido pedido, Model model) {
+	public String save(Pedido pedido, @RequestParam("files") MultipartFile[] files, Model model) {
+		new File(rutaFicheros + pedido.getId().toString()).mkdir();
+		int numFiles = new File(rutaFicheros + pedido.getId().toString()).listFiles().length;
+
+		StringBuilder fileNames = new StringBuilder();
+		for (MultipartFile file : files) {
+			String fileName = file.getOriginalFilename();
+			Path fileNameAndPath = Paths.get(rutaFicheros + pedido.getId().toString(), "file"  + ++numFiles + fileName.substring(fileName.lastIndexOf(".")));
+			fileNames.append(file.getOriginalFilename());
+			try {
+				Files.write(fileNameAndPath, file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		pedidoService.save(pedido);
 		return listAll(model);
 	}

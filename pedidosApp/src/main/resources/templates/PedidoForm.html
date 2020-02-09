@@ -27,7 +27,8 @@
 
 	<div class="container p-4">
 		<h4 class="mb-3">Añadir pedido</h4>
-		<form th:action="@{/pedidos/save}" method="post" th:object="${pedido}">
+		<form th:action="@{/pedidos/save}" method="post" th:object="${pedido}"
+			enctype="multipart/form-data">
 			<input type="hidden" th:field="*{id}">
 			<div class="form-group row">
 				<div class="col">
@@ -61,13 +62,22 @@
 				<textarea class="form-control" id="observacion"
 					th:field="*{observacion}" rows="3"></textarea>
 			</div>
-			<!-- 			<div class="form-group"> -->
-			<!-- 				<label class="ml-1 col-form-label" for="imagenes">Imágenes</label> <input -->
-			<!-- 					type="file" class="form-control-file" id="imagenes" -->
-			<!-- 					th:field="*{imagenes}" aria-describedby="fileHelp"> <small -->
-			<!-- 					id="fileHelp" class="form-text text-muted">Introduce las -->
-			<!-- 					imágenes relacionadas con el pedido.</small> -->
-			<!-- 			</div> -->
+
+
+
+
+
+			<div class="form-group">
+				<label class="ml-1 col-form-label" for="files">Imágenes</label> <input
+					type="file" multiple class="form-control-file" id="files"
+					name="files" aria-describedby="fileHelp"> <small
+					id="fileHelp" class="form-text text-muted">Introduce las
+					imágenes relacionadas con el pedido.</small>
+			</div>
+
+
+
+
 
 			<div id="accordion" class="accordion">
 				<div class="card">
@@ -85,7 +95,7 @@
 						aria-labelledby="headingOne" data-parent="#accordion">
 						<div class="card-body">
 
-							<table class="table table-striped">
+							<table class="table table-striped table-sm table-responsive-xl">
 								<thead>
 									<tr>
 										<th>Unidades</th>
@@ -111,59 +121,70 @@
 										<td th:text="${mueble.precioUnitario}"></td>
 										<td><button class="btn btn-danger" type="submit"
 												name="removeMueble" th:value="${mueble.id}">
-												<i class="fas fa-trash-alt"></i>
+												<i style="align-content: center" class="fas fa-trash-alt"></i>
 											</button></td>
 									</tr>
 								</tbody>
 							</table>
-							<div class="form-group row">
-								<div class="col">
-									<label for="unidades" class="ml-1 col-form-label">Unidades</label>
-									<input type="number" class="form-control" id="unidades"
-										th:field="${muebleNuevo.unidades}" placeholder="Unidades">
-								</div>
-								<div class="col">
-									<label for="tipo" class="ml-1 col-form-label">Tipo</label> <input
-										type="text" class="form-control" id="tipo"
-										th:field="${muebleNuevo.tipo}" placeholder="Tipo">
-								</div>
 
-								<div class="col">
-									<label for="modelo" class="ml-1 col-form-label">Modelo</label>
-									<input type="text" class="form-control" id="modelo"
-										th:field="${muebleNuevo.modelo}" placeholder="Modelo">
+							<hr>
+							<div class="form-group">
+								<div class="form-group row">
+									<div class="col">
+										<label for="unidades" class="ml-1 col-form-label">Unidades</label>
+										<input type="number" class="form-control" id="unidades"
+											th:field="${muebleNuevo.unidades}" placeholder="Unidades">
+									</div>
+									<div class="col">
+										<label for="tipo" class="ml-1 col-form-label">Tipo</label> <input
+											type="text" class="form-control" id="tipo"
+											th:field="${muebleNuevo.tipo}" placeholder="Tipo">
+									</div>
+
+									<div class="col">
+										<label for="modelo" class="ml-1 col-form-label">Modelo</label>
+										<input type="text" class="form-control" id="modelo"
+											th:field="${muebleNuevo.modelo}" placeholder="Modelo">
+									</div>
+									<div class="col">
+										<label for="color" class="ml-1 col-form-label">Color</label> <input
+											type="text" class="form-control" id="color"
+											th:field="${muebleNuevo.color}" placeholder="Color">
+									</div>
 								</div>
-								<div class="col">
-									<label for="color" class="ml-1 col-form-label">Color</label> <input
-										type="text" class="form-control" id="color"
-										th:field="${muebleNuevo.color}" placeholder="Color">
+								<div class="form-group row">
+									<div class="col">
+										<label for="grosor" class="ml-1 col-form-label">Grosor</label>
+										<input type="text" class="form-control" id="grosor"
+											th:field="${muebleNuevo.grosor}" placeholder="Grosor">
+									</div>
+									<div class="col">
+										<label for="medidas" class="ml-1 col-form-label">Medidas</label>
+										<input type="text" class="form-control" id="medidas"
+											th:field="${muebleNuevo.medidas}" placeholder="Medidas">
+									</div>
+									<div class="col">
+										<label for="precioUnitario" class="ml-1 col-form-label">Precio
+											u.</label> <input type="number" step="0.01" class="form-control"
+											id="precioUnitario" th:field="${muebleNuevo.precioUnitario}"
+											placeholder="Precio u.">
+									</div>
 								</div>
-								<div class="col">
-									<label for="grosor" class="ml-1 col-form-label">Grosor</label>
-									<input type="text" class="form-control" id="grosor"
-										th:field="${muebleNuevo.grosor}" placeholder="Grosor">
+								<div class="form-group row">
+									<div class="col">
+										<label for="descripcion" class="ml-1 col-form-label">Descripción</label>
+										<input type="text" class="form-control" id="descripcion"
+											th:field="${muebleNuevo.descripcion}"
+											placeholder="Descripción">
+									</div>
+									<div class="col-2">
+										<label for="descripcion" class="ml-1 col-form-label">&nbsp;</label>
+										<button class="form-control btn btn-primary" type="submit"
+											name="addMueble" th:value="${muebleNuevo}">
+											<i class="fas fa-plus"></i> Añadir mueble
+										</button>
+									</div>
 								</div>
-								<div class="col">
-									<label for="medidas" class="ml-1 col-form-label">Medidas</label>
-									<input type="text" class="form-control" id="medidas"
-										th:field="${muebleNuevo.medidas}" placeholder="Medidas">
-								</div>
-								<div class="col">
-									<label for="descripcion" class="ml-1 col-form-label">Descripción</label>
-									<input type="text" class="form-control" id="descripcion"
-										th:field="${muebleNuevo.descripcion}"
-										placeholder="Descripción">
-								</div>
-								<div class="col">
-									<label for="precioUnitario" class="ml-1 col-form-label">Precio
-										u.</label> <input type="number" step="0.01" class="form-control"
-										id="precioUnitario" th:field="${muebleNuevo.precioUnitario}"
-										placeholder="Precio u.">
-								</div>
-								<button class="btn" type="submit" name="addMueble"
-									th:value="${muebleNuevo}">
-									<i class="fas fa-plus"></i>
-								</button>
 							</div>
 						</div>
 					</div>
