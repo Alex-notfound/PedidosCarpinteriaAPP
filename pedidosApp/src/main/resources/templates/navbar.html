@@ -6,16 +6,15 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <title>PedidosApp</title>
-<link th:href="@{../../bootstrap/css/bootstrap.css}" rel="stylesheet" />
+<link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css"
+	rel="stylesheet" />
 <link th:href="@{../../fontawesome/css/all.css}" rel="stylesheet">
-<!-- JQuery -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- 	Popper -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<link rel="stylesheet" th:href="@{../../pedidos.css}">
 
-<script th:src="@{../../bootstrap/js/bootstrap.min.js}"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="webjars/popper.js/1.16.1/dist/popper.min.js"></script>
+<script src="/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js"></script>
+<script th:src="@{../../pedidos.js}"></script>
 
 </head>
 <body>
@@ -34,8 +33,7 @@
 					<li class="nav-item active"><a class="nav-link"
 						th:href="@{/pedidos/}">Pedidos <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						th:href="@{/muebles/}">Muebles</a></li>
+
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<div class="btn btn-outline-success my-2 my-sm-0">Ebony
