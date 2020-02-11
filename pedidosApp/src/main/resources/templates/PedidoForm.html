@@ -41,19 +41,27 @@
 						type="number" class="form-control" id="precio"
 						th:field="*{precio}" placeholder="Precio" step="0.01">
 				</div>
+				<div class="col" style="text-align: left">
+					<label for="esUrgente" class="ml-1 col-form-label">Urgente</label>
+					<div class="form-check mt-1">
+						<input type="checkbox" style="width: 1.25rem; height: 1.25rem;"
+							class="form-check-input position-static" id="esUrgente"
+							th:field="*{esUrgente}">
+					</div>
+				</div>
 			</div>
 
 			<div class="form-group row">
 				<div class="col">
 					<label for="fechaPedido" class="ml-1 col-form-label">Fecha
-						de pedido</label> <input class="form-control" type="date"
-						value="2011-08-19" id="fechaPedido" th:field="*{fechaPedido}">
+						de pedido</label> <input class="form-control" type="date" id="fechaPedido"
+						th:field="*{fechaPedido}">
 				</div>
 
 				<div class="col">
 					<label for="fechaEntrega" class="ml-1 col-form-label">Fecha
 						de entrega</label> <input class="form-control" type="date"
-						value="2011-08-19" id="fechaEntrega" th:field="*{fechaEntrega}">
+						id="fechaEntrega" th:field="*{fechaEntrega}">
 				</div>
 			</div>
 
@@ -65,8 +73,6 @@
 
 
 
-
-
 			<div class="form-group">
 				<label class="ml-1 col-form-label" for="files">Imágenes</label> <input
 					type="file" multiple class="form-control-file" id="files"
@@ -74,8 +80,6 @@
 					id="fileHelp" class="form-text text-muted">Introduce las
 					imágenes relacionadas con el pedido.</small>
 			</div>
-
-
 
 
 
@@ -132,8 +136,9 @@
 								<div class="form-group row">
 									<div class="col">
 										<label for="unidades" class="ml-1 col-form-label">Unidades</label>
-										<input type="number" class="form-control" id="unidades"
-											th:field="${muebleNuevo.unidades}" placeholder="Unidades">
+										<input type="number" value="1" class="form-control"
+											id="unidades" th:field="${muebleNuevo.unidades}"
+											placeholder="1">
 									</div>
 									<div class="col">
 										<label for="tipo" class="ml-1 col-form-label">Tipo</label> <input

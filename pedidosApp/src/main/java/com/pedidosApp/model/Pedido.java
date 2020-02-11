@@ -27,8 +27,18 @@ public class Pedido {
 	private Date fechaEntrega;
 	@Column
 	private double precio;
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<Mueble> muebles = new ArrayList<>();
+	@Column(columnDefinition = "tinyint(1) default 0")
+	private boolean esUrgente;
+
+	public boolean isEsUrgente() {
+		return esUrgente;
+	}
+
+	public void setEsUrgente(boolean esUrgente) {
+		this.esUrgente = esUrgente;
+	}
 
 	public List<Mueble> getMuebles() {
 		return muebles;
