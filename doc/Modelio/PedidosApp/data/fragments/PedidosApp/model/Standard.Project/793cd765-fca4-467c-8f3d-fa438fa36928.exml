@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="PedidosApp" version="4">
+  <OBJECT>
+    <ID name="PedidosApp" mc="Standard.Project" uid="793cd765-fca4-467c-8f3d-fa438fa36928"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[PedidosApp]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="pedidosapp" mc="Standard.Package" uid="4d9a11c6-6c28-4455-89cb-88b48a762b1e"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="PedidosApp" mc="Infrastructure.DiagramSet" uid="fb1a27bf-c123-415c-b976-ca0edb55f9fc"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

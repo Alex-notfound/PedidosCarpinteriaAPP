@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="pedidosapp" version="4">
+  <OBJECT>
+    <ID name="pedidosapp" mc="Standard.Package" uid="4d9a11c6-6c28-4455-89cb-88b48a762b1e"/>
+    <PID name="PedidosApp" mc="Standard.Project" uid="793cd765-fca4-467c-8f3d-fa438fa36928"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[pedidosapp]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Usuario" mc="Standard.Actor" uid="acba4908-682a-4584-a88d-cff0604c3047"/>
+        <COMPID name="Crear pedido" mc="Standard.UseCase" uid="956308a5-ce71-46d2-98a3-d5e9c16fb2a5"/>
+        <COMPID name="Modificar pedido" mc="Standard.UseCase" uid="5efafae9-d8ca-4d5c-b9f7-e0e6ee2e722b"/>
+        <COMPID name="Listar pedidos" mc="Standard.UseCase" uid="9f5a33c5-6c89-4a2c-b772-d76a2efdfbf7"/>
+        <COMPID name="Consultar detalles de pedido" mc="Standard.UseCase" uid="eead35ae-1285-49ea-baeb-e48efceebec7"/>
+        <COMPID name="Eliminar pedido" mc="Standard.UseCase" uid="0736810e-1328-424f-af06-72966a21df27"/>
+        <COMPID name="Imprimir pedido" mc="Standard.UseCase" uid="b8e875ea-5720-4dcc-bd3a-afc0ec78e390"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="PedidosApp init" mc="Standard.UseCaseDiagram" uid="443fe310-76e3-4137-b238-1dc91fe91559"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
